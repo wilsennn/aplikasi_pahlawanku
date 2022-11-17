@@ -1,9 +1,7 @@
-package george.if3b.aplikasi_pahlawan;
+package com.ahmfarisi.pahlawanku;
 
 public class ModelPahlawan {
-    private String nama;
-    private String tentang;
-    private String foto;
+    private String nama, tentang, foto;
 
     public String getNama() {
         return nama;

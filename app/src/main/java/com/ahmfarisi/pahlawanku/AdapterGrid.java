@@ -15,11 +15,11 @@ import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
-public class AdapterPahlawan extends RecyclerView.Adapter<AdapterPahlawan.VHPahlawan>{
+public class AdapterGrid extends RecyclerView.Adapter<AdapterGrid.VHPahlawan>{
     private ArrayList<ModelPahlawan> dataPahlawan;
     private Context ctx;
 
-    public AdapterPahlawan(ArrayList<ModelPahlawan> dataPahlawan, Context ctx) {
+    public AdapterGrid(ArrayList<ModelPahlawan> dataPahlawan, Context ctx) {
         this.dataPahlawan = dataPahlawan;
         this.ctx = ctx;
     }
@@ -27,21 +27,19 @@ public class AdapterPahlawan extends RecyclerView.Adapter<AdapterPahlawan.VHPahl
     @NonNull
     @Override
     public VHPahlawan onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View VW = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_card, parent, false);
+        View VW = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_grid, parent, false);
         return new VHPahlawan(VW);
     }
 
     @Override
     public void onBindViewHolder(@NonNull VHPahlawan holder, int position) {
         ModelPahlawan pahlawan = dataPahlawan.get(position);
-        holder.tvNama.setText(pahlawan.getNama());
-        holder.tvTentang.setText(pahlawan.getTentang());
 
         Glide
                 .with(ctx)
                 .load(pahlawan.getFoto())
                 .centerCrop()
-                .into(holder.ivFoto);
+                .into(holder.ivGrid);
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,14 +67,11 @@ public class AdapterPahlawan extends RecyclerView.Adapter<AdapterPahlawan.VHPahl
     }
 
     public class VHPahlawan extends RecyclerView.ViewHolder {
-        TextView tvNama, tvTentang;
-        ImageView ivFoto;
+        ImageView ivGrid;
 
         public VHPahlawan(@NonNull View itemView) {
             super(itemView);
-            tvNama = itemView.findViewById(R.id.tv_nama);
-            tvTentang = itemView.findViewById(R.id.tv_tentang);
-            ivFoto = itemView.findViewById(R.id.iv_foto);
+            ivGrid = itemView.findViewById(R.id.iv_grid);
         }
     }
 }
